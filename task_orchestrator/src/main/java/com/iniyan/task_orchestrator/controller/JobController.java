@@ -1,7 +1,7 @@
-package com.example.task_orchestrator.controller;
+package com.iniyan.task_orchestrator.controller;
 
-import com.example.task_orchestrator.entity.Job;
-import com.example.task_orchestrator.repository.JobRepository;
+import com.iniyan.task_orchestrator.entity.Job;
+import com.iniyan.task_orchestrator.repository.JobRepository;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

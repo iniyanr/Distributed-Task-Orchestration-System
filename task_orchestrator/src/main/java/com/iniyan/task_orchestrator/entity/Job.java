@@ -1,4 +1,4 @@
-package com.example.task_orchestrator.entity;
+package com.iniyan.task_orchestrator.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
