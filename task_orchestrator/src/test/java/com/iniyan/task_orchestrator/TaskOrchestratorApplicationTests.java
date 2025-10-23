@@ -1,4 +1,4 @@
-package com.example.task_orchestrator;
+package com.iniyan.task_orchestrator;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
