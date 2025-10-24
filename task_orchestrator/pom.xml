@@ -12,7 +12,7 @@
 	<artifactId>task_orchestrator</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>task_orchestrator</name>
-	<description>Demo project for Spring Boot</description>
+	<description>Distributed Task Orchestration System</description>
 	<url/>
 	<licenses>
 		<license/>

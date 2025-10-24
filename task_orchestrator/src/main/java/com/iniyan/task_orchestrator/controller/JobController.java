@@ -1,6 +1,8 @@
 package com.iniyan.task_orchestrator.controller;
 
+import com.iniyan.task_orchestrator.dto.ApiResponse;
 import com.iniyan.task_orchestrator.entity.Job;
+import com.iniyan.task_orchestrator.exception.ResourceNotFoundException;
 import com.iniyan.task_orchestrator.repository.JobRepository;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,12 +19,29 @@ public class JobController {
     }
 
     @GetMapping
-    public List<Job> getAllJobs() {
-        return jobRepository.findAll();
+    public ApiResponse<List<Job>> getAllJobs() {
+        List<Job> jobs = jobRepository.findAll();
+        return ApiResponse.success(jobs, "Jobs fetched successfully");
+    }
+
+    @GetMapping("/{id}")
+    public ApiResponse<Job> getJobById(@PathVariable Long id) {
+        Job job = jobRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Job not found with id " + id));
+        return ApiResponse.success(job, "Job fetched successfully");
     }
 
     @PostMapping
-    public Job createJob(@RequestBody Job job) {
-        return jobRepository.save(job);
+    public ApiResponse<Job> createJob(@RequestBody Job job) {
+        Job savedJob = jobRepository.save(job);
+        return ApiResponse.success(savedJob, "Job created successfully");
+    }
+
+    @DeleteMapping("/{id}")
+    public ApiResponse<Void> deleteJob(@PathVariable Long id) {
+        Job job = jobRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Job not found with id " + id));
+        jobRepository.delete(job);
+        return ApiResponse.success(null, "Job deleted successfully");
     }
 }
